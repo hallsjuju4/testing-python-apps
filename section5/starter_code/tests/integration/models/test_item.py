@@ -13,3 +13,4 @@ class ItemTest(BaseTest):
             # verify item exists in db
             self.assertIsNotNone(ItemModel.find_by_name('test'))
 
+# Base Test
