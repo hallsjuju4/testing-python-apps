@@ -1,7 +1,7 @@
 """
 For pytest:
-   pip install -e .
-   pytest
+   $ pip install -e .
+   $ pytest
 """
 from setuptools import setup, find_packages
 
