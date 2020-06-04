@@ -15,3 +15,4 @@ venv/
 testing-python-apps.txt
 theme.key
 data.db
+app.egg-info
