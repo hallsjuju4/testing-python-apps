@@ -4,6 +4,8 @@ from models.store import StoreModel
 from tests.base_test import BaseTest
 import json
 
+TEST_ITEM = {'name': 'test', 'price': 17.99}
+TEST_ITEM_PRICE = {'price': 17.99, 'store_id': 1}
 
 class ItemTest(BaseTest):
     def setUp(self):
@@ -35,7 +37,7 @@ class ItemTest(BaseTest):
                 r = c.get('/item/test', headers={'Authorization': self.auth_header})
 
                 self.assertEqual(r.status_code, 200)
-                self.assertDictEqual(d1={'name': 'test', 'price': 17.99},
+                self.assertDictEqual(d1=TEST_ITEM,
                                      d2=json.loads(r.data))
 
     def test_delete_item(self):
@@ -53,19 +55,19 @@ class ItemTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 StoreModel('test').save_to_db()
-                r = c.post('/item/test', data={'price': 17.99, 'store_id': 1})
+                r = c.post('/item/test', data=TEST_ITEM_PRICE)
 
                 self.assertEqual(r.status_code, 201)
                 self.assertEqual(ItemModel.find_by_name('test').price, 17.99)
-                self.assertDictEqual(d1={'name': 'test', 'price': 17.99},
+                self.assertDictEqual(d1=TEST_ITEM,
                                      d2=json.loads(r.data))
 
     def test_create_duplicate_item(self):
         with self.app() as c:
             with self.app_context():
                 StoreModel('test').save_to_db()
-                c.post('/item/test', data={'price': 17.99, 'store_id': 1})
-                r = c.post('/item/test', data={'price': 17.99, 'store_id': 1})
+                c.post('/item/test', data=TEST_ITEM_PRICE)
+                r = c.post('/item/test', data=TEST_ITEM_PRICE)
 
                 self.assertEqual(r.status_code, 400)
 
@@ -73,22 +75,22 @@ class ItemTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 StoreModel('test').save_to_db()
-                r = c.put('/item/test', data={'price': 17.99, 'store_id': 1})
+                r = c.put('/item/test', data=TEST_ITEM_PRICE)
 
                 self.assertEqual(r.status_code, 200)
                 self.assertEqual(ItemModel.find_by_name('test').price, 17.99)
-                self.assertDictEqual(d1={'name': 'test', 'price': 17.99},
+                self.assertDictEqual(d1=TEST_ITEM,
                                      d2=json.loads(r.data))
 
     def test_put_update_item(self):
         with self.app() as c:
             with self.app_context():
                 StoreModel('test').save_to_db()
-                c.put('/item/test', data={'price': 17.99, 'store_id': 1})
-                r = c.put('/item/test', data={'price': 18.99, 'store_id': 1})
+                c.put('/item/test', data=TEST_ITEM_PRICE)
+                r = c.put('/item/test', data={'price': 5.99, 'store_id': 1})
 
                 self.assertEqual(r.status_code, 200)
-                self.assertEqual(ItemModel.find_by_name('test').price, 18.99)
+                self.assertEqual(ItemModel.find_by_name('test').price, 5.99)
 
     def test_item_list(self):
         with self.app() as c:
@@ -97,5 +99,5 @@ class ItemTest(BaseTest):
                 ItemModel('test', 17.99, 1).save_to_db()
                 r = c.get('/items')
 
-                self.assertDictEqual(d1={'items': [{'name': 'test', 'price': 17.99}]},
+                self.assertDictEqual(d1={'items': [TEST_ITEM]},
                                      d2=json.loads(r.data))
