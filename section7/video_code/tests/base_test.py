@@ -12,9 +12,11 @@ from db import db
 
 
 class BaseTest(TestCase):
+    SQLALCHEMY_DATABASE_URI = "sqlite://"
+
     @classmethod
     def setUpClass(cls):
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
+        app.config['SQLALCHEMY_DATABASE_URI'] = BaseTest.SQLALCHEMY_DATABASE_URI
         app.config['DEBUG'] = False
         app.config['PROPAGATE_EXCEPTIONS'] = True
         with app.app_context():

@@ -1,8 +1,8 @@
 from models.store import StoreModel
-from tests.base_test import BaseTest
+from tests.unit.unit_base_test import UnitBaseTest
 
 
-class StoreTest(BaseTest):
+class StoreTest(UnitBaseTest):
     def test_create_store(self):
         store = StoreModel('test')
 

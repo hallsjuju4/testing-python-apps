@@ -5,9 +5,9 @@ from flask_restful import Api
 from flask_jwt import JWT, JWTError
 
 from security import authenticate, identity
-from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
+from resources.user import UserRegister
 
 app = Flask(__name__)
 
@@ -32,7 +32,6 @@ api.add_resource(UserRegister, '/register')
 @app.errorhandler(JWTError)
 def auth_error(err):
     return jsonify({'message': 'Could not authorize. Did you include a valid Authorization header?'}), 401
-
 
 if __name__ == '__main__':
     from db import db

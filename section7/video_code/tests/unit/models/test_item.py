@@ -11,8 +11,8 @@ class ItemTest(UnitBaseTest):
         self.assertEqual(item.price, 19.99,
                          "The price of the item after creation does not equal the constructor argument.")
         self.assertEqual(item.store_id, 1,
-                         "The store_id does not equal the initialized value.")
-        self.assertIsNone(item.store)
+                         "The store_id of the item after creation does not equal the constructor argument.")
+        self.assertIsNone(item.store, "The item's store was not None even though the store was not created.")
 
     def test_item_json(self):
         item = ItemModel('test', 19.99, 1)
