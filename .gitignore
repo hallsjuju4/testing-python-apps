@@ -1,4 +1,5 @@
 *.key
+*.bak
 *.screenflow
 *.png
 starter_code.zip

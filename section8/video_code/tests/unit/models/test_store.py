@@ -14,6 +14,7 @@ class StoreTest(UnitBaseTest):
     def test_store_json(self):
         store = StoreModel('test')
         expected = {
+            'id': None,
             'name': 'test',
             'items': []
         }

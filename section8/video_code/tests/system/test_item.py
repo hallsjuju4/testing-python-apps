@@ -4,7 +4,7 @@ from models.store import StoreModel
 from tests.base_test import BaseTest
 import json
 
-TEST_ITEM = {'name': 'test', 'price': 17.99}
+TEST_ITEM = {'id': 1, 'name': 'test', 'price': 17.99}
 TEST_ITEM_PRICE = {'price': 17.99, 'store_id': 1}
 
 class ItemTest(BaseTest):

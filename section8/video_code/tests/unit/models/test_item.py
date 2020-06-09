@@ -17,6 +17,7 @@ class ItemTest(UnitBaseTest):
     def test_item_json(self):
         item = ItemModel('test', 19.99, 1)
         expected = {
+            'id': None,
             'name': 'test',
             'price': 19.99
         }
