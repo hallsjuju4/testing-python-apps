@@ -1,5 +1,5 @@
-from tests.acceptance.page_model.blog_page import BlogPageLocators
-from tests.acceptance.pages.base_page import BasePage
+from section10.video_code.tests.acceptance.page_model.blog_page import BlogPageLocators
+from section10.video_code.tests.acceptance.pages.base_page import BasePage
 
 
 class BlogPage(BasePage):

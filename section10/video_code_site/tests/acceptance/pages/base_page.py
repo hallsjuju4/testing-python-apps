@@ -1,4 +1,4 @@
-from tests.acceptance.page_model.base_page import BasePageLocators
+from section10.video_code.tests.acceptance.page_model.base_page import BasePageLocators
 
 
 class BasePage:

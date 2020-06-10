@@ -2,7 +2,7 @@ from behave import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-from tests.acceptance.page_model.blog_page import BlogPageLocators
+from section10.video_code.tests.acceptance.page_model.blog_page import BlogPageLocators
 
 use_step_matcher('re')
 

@@ -1,9 +1,9 @@
 from behave import *
 from selenium import webdriver
 
-from tests.acceptance.pages.base_page import BasePage
-from tests.acceptance.pages.blog_page import BlogPage
-from tests.acceptance.pages.new_post_page import NewPostPage
+from section10.video_code.tests.acceptance.pages.base_page import BasePage
+from section10.video_code.tests.acceptance.pages.blog_page import BlogPage
+from section10.video_code.tests.acceptance.pages.new_post_page import NewPostPage
 
 use_step_matcher('re')
 
